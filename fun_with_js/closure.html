@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closure</title>
+</head>
+<body style="background-color: #313131;">
+    <button id=""orange>orange</button>
+    <button id="blue">blue</button>
+</body>
+    <script>
+    function init() {
+      let name = "Mozilla"; // name is a local variable created by init
+        function displayName() {
+    // displayName() is the inner function, that forms a closure
+            console.log(name); // use variable declared in the parent function
+  }
+    displayName();
+}
+init();
+
+
+// function k under function hoga to usko bhi access milega
+// lekin function h ke bahar se function k ko access nhi milega
+// aur function k ke bahar se function h ke variable ko access nhi milega
+// isiliye closure ka concept aata hai
+// closure ka matlab hai ki ek function ke andar ek aur function hota hai
+// aur wo inner function apne parent function ke variable ko access kar sakta hai
+// lekin parent function apne inner function ke variable ko access nhi kar sakta hai
+// aur dono function ke bahar se dono function ke variable ko access nhi kar sakta hai
+// isiliye closure ka concept aata hai
+
+
+// yahi lexical scoping hai
+
+
+// function outer(){
+//     let username="anand"
+//     function inner(){
+//         let secret="my321"
+//         console.log(username);
+//     }
+//     function innerTwo(){
+//         console.log("innerTwo",username);
+//         console.log(secret);
+//     }
+//     inner()
+//     innerTwo()
+//     console.log("OUTER",username);
+// }
+// outer()
+// console.log("TOO OUTER", username);
+
+
+function makeFunc() {
+  const name = "Mozilla";
+  function displayName() {
+    console.log(name);
+  }
+  return displayName;
+}
+
+const myFunc = makeFunc();
+myFunc();
+
+
+// memory k reference ka role aata hai yaha
+// jab function return hota hai to uske sath uske scope ka reference bhi return hota hai
+// isiliye jab hum myFunc ko call karte hai to uske sath uske scope ka reference bhi hota hai
+// aur uske sath uske scope ke variable ko bhi access kar sakte hai
+// isiliye closure ka concept aata hai
+    </script>
+
+    <script>
+// onclick ko ek function chahiye hota hai
+// aur humne ek function diya hai jo ki ek closure hai
+
+
+// document.getElementById("orange").onclick = function(){
+//     document.body.style.backgroundColor = "orange"
+// }
+// document.getElementById("blue").onclick = function(){
+//     document.body.style.backgroundColor = "blue"
+// }
+
+function clickHandler(color){{
+    // document.body.style.backgroundColor = `${color}`
+
+    return function(){
+        document.body.style.backgroundColor = color
+    }
+}
+
+document.getElementById("orange").onclick = clickhandler("orange")
+document.getElementById("blue").onclick = clickhandler("blue"){
+
+  
+    </script>
+
+</html>
